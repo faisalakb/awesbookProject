@@ -131,7 +131,18 @@ npx eslint . --fix
 - Twitter: [@twitterhandle](https://twitter.com/Faisalakb786)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/faisal-mumtaz-514a221a6/)
 
-👤 
+👤 **Christopher Uduekwe**
+
+- GitHub: [@githubhandle](https://github.com/chudisoft)
+- Twitter: [@twitterhandle](https://twitter.com/chrisuduekwe)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/christopher-uduekwe)
+
+👤 **Fatima Najafi**
+
+- GitHub: [@githubhandle](https://github.com/fatima-najafi)
+- Twitter: [@twitterhandle](https://twitter.com)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/fatima-najafi-75424a23a/)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
