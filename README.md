@@ -140,7 +140,7 @@ npx eslint . --fix
 👤 **Fatima Najafi**
 
 - GitHub: [@githubhandle](https://github.com/fatima-najafi)
-- Twitter: [@twitterhandle](https://twitter.com/fatima-najafi)
+- Twitter: [@twitterhandle](https://twitter.com)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/fatima-najafi-75424a23a/)
 
 
