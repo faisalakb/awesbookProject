@@ -1,19 +1,31 @@
+const bookcollection = document.getElementById('bookCollection');
+
+bookcollection.innerHTML = localStorage.getItem('booksData');
+
 function addBook() {
   const bookTitle = document.getElementById('title').value;
   const bookAuthor = document.getElementById('author').value;
-  const bookcollection = document.getElementById('bookCollection');
   const inputElemnet = document.getElementsByTagName('input');
   const id = new Date().getTime();
   if (bookTitle === '' || bookAuthor === '') {
     alert('Please enter the information');
   } else {
-    const book = `
-      <div id="${id}">
-        <p>Title: ${bookTitle}<br>Author: ${bookAuthor}</p>
-        <button type="button" onclick="removeBook(${id})">Remove</button>
-        <hr/>
-      </div>`;
-    bookcollection.innerHTML += book;
+    const div = document.createElement('div');
+    const pTitle = document.createElement('p');
+    const pAuthor = document.createElement('p');
+    const rm = document.createElement('button');
+    const hr = document.createElement('hr');
+    div.id = id;
+    pTitle.textContent = `Title: ${bookTitle}`;
+    pAuthor.textContent = `Author: ${bookAuthor}`;
+    rm.textContent = 'Remove'
+    rm.addEventListener('click', removeBook);
+    
+    div.appendChild(pTitle);
+    div.appendChild(pAuthor);
+    div.appendChild(rm);
+    div.appendChild(hr);
+    bookcollection.appendChild(div);
     for (let i = 0; i < inputElemnet.length; i += 1) {
       inputElemnet[i].value = '';
     }
@@ -22,15 +34,11 @@ function addBook() {
 }
 
 function removeBook(e) {
-  const bookDel = document.getElementById('bookCollection');
-  const delId = document.getElementById(e);
-  bookDel.removeChild(delId);
-  localStorage.setItem('booksData', bookDel.innerHTML);
+  bookcollection.removeChild(e.target.parentElement);
+  localStorage.setItem('booksData', bookcollection.innerHTML);
 }
 
 window.onload = () => {
   const addBtn = document.getElementById('addBtn');
   addBtn.addEventListener('click', addBook);
-  const rm = removeBook;
-  console.log(rm);
 };
