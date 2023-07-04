@@ -1,6 +1,17 @@
 const bookcollection = document.getElementById('bookCollection');
 
-bookcollection.innerHTML = localStorage.getItem('booksData');
+function removeBook(e) {
+  const bookDiv = e.target.parentElement;
+  bookDiv.parentNode.removeChild(bookDiv);
+  localStorage.setItem('booksData', bookcollection.innerHTML);
+}
+
+function attachRemoveBookEventListeners() {
+  const removeButtons = document.getElementsByClassName('remove');
+  for (let i = 0; i < removeButtons.length; i += 1) {
+    removeButtons[i].addEventListener('click', removeBook);
+  }
+}
 
 function addBook() {
   const bookTitle = document.getElementById('title').value;
@@ -14,13 +25,16 @@ function addBook() {
     const pTitle = document.createElement('p');
     const pAuthor = document.createElement('p');
     const rm = document.createElement('button');
+    rm.classList.add('remove');
     const hr = document.createElement('hr');
     div.id = id;
     pTitle.textContent = `Title: ${bookTitle}`;
     pAuthor.textContent = `Author: ${bookAuthor}`;
-    rm.textContent = 'Remove'
+    rm.textContent = 'Remove';
+
+    // Attach the event listener for the delete button to the newly created 'rm' button
     rm.addEventListener('click', removeBook);
-    
+
     div.appendChild(pTitle);
     div.appendChild(pAuthor);
     div.appendChild(rm);
@@ -33,12 +47,16 @@ function addBook() {
   }
 }
 
-function removeBook(e) {
-  bookcollection.removeChild(e.target.parentElement);
-  localStorage.setItem('booksData', bookcollection.innerHTML);
-}
-
 window.onload = () => {
   const addBtn = document.getElementById('addBtn');
   addBtn.addEventListener('click', addBook);
+
+  // Attach the event listeners to existing 'rm' buttons after loading the page
+  attachRemoveBookEventListeners();
+
+  // Recreate the book collection from localStorage
+  bookcollection.innerHTML = localStorage.getItem('booksData');
+
+  // Attach the event listeners to newly created 'rm' buttons in the book collection
+  attachRemoveBookEventListeners();
 };
